@@ -1,3 +1,4 @@
+//Exercicio 1
 function pairSum(a, b, callbackSuccess, callbackError) {
   const result = a + b;
 
@@ -19,3 +20,27 @@ function callbackSuccess(message) {
 function callbackError(message) {
   console.error(message);
 }
+
+//Exercicio 2
+function sumPromise(a, b) {
+  return new Promise((resolve, reject) => {
+    pairSum(
+      a,
+      b,
+      (successMessage) => {
+        resolve(successMessage);
+      },
+      (errorMessage) => {
+        reject(errorMessage);
+      }
+    );
+  });
+}
+
+sumPromise(2, 2)
+  .then((successMessage) => {
+    console.log(successMessage);
+  })
+  .catch((errorMessage) => {
+    console.error(errorMessage);
+  });
