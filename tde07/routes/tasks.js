@@ -11,7 +11,7 @@ let tasks = [
 ];
 
 router.get("/tasks", (req, res) => {
-  res.json({ tasks: tasks });
+  res.json({ tasks });
 });
 
 router.post("/tasks", (req, res) => {
@@ -21,8 +21,8 @@ router.post("/tasks", (req, res) => {
   res.json({ status: "ok" });
 });
 
-router.put("/tasks:id", (req, res) => {
-  const id = req.params.id;
+router.put("/tasks/:id", (req, res) => {
+  const id = Number(req.params.id);
   tasks.forEach((task) => {
     if (task.id === id) {
       task.name = req.body.name;
